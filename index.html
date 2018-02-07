@@ -1,0 +1,97 @@
+<!DOCTYPEhtml>
+<html>
+
+<head>
+    <Title>Making Numbers Words</Title>
+</head>
+
+<body>
+    <div id='numText'></div>
+    <script>
+        const thouText = [',', 'one-thousand']
+        const hunText = [',', 'one-hundred', 'two-hundred', 'three-hundred', 'four-hundred', 'five-hundred', 'six-hundred', 'seven-hundred', 'eight-hundred', 'nine-hundred']
+        const tenText = [',', 'ten', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+        const singleText = [',', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eightteen', 'nineteen'];
+        for (i = 1; i <= 1000; i++) {
+            do {
+                if (i % 10 == 0) {
+                    var list = document.createElement('p');
+                    var listText = document.createTextNode(tenText[i / 10]);
+                    list.appendChild(listText);
+                    var destination = document.getElementById('numText');
+                    destination.appendChild(list);
+                } else if (i < 10) {
+                    var list = document.createElement('p');
+                    var listText = document.createTextNode(singleText[i]);
+                    list.appendChild(listText);
+                    var destination = document.getElementById('numText');
+                    destination.appendChild(list);
+                }
+                else {
+                    var list = document.createElement('p');
+                    var listText = document.createTextNode(singleText[i - 1]);
+                    list.appendChild(listText);
+                    var destination = document.getElementById('numText');
+                    destination.appendChild(list);
+                }
+                console.log(i);
+                i++;
+            } while (i <= 20);
+            do {
+                if (i % 10 == 0) {
+                    var list = document.createElement('p');
+                    var listText = document.createTextNode(tenText[i / 10]);
+                    list.appendChild(listText);
+                    var destination = document.getElementById('numText');
+                    destination.appendChild(list);
+                } else {
+                    var list = document.createElement('p');
+                    var byten = i / 10;
+                    t = Math.floor(byten)
+                    var s = i % 10;
+                    var listText = document.createTextNode(tenText[t] + ' ' + singleText[s]);
+                    list.appendChild(listText);
+                    var destination = document.getElementById('numText');
+                    destination.appendChild(list);
+                }
+                console.log(i);
+                i++;
+            }
+            while (i < 100);
+            do {
+                if (i < 1000) {
+                    var list = document.createElement('p');
+                    var byhun = i / 100;
+                    h = Math.floor(byhun)
+                    var byten = i / 10;
+                    t = Math.floor(byten)
+                    var s = i % 10;
+                    // if (t - (h * 10) == 1) {
+                    //     if (s !== 0) {
+                    //         var listText = document.createTextNode(hunText[h] + ' ' + singleText[s+9]);
+                    //         list.appendChild(listText);
+                    //         var destination = document.getElementById('numText');
+                    //         destination.appendChild(list);
+                    //     } else {continue}
+                    // } else {
+                    var listText = document.createTextNode(hunText[h] + ' ' + tenText[t - (10 * h)] + ' ' + singleText[s]);
+                    list.appendChild(listText);
+                    var destination = document.getElementById('numText');
+                    destination.appendChild(list);
+                    // }
+                } else {
+                    var list = document.createElement('p');
+                    var listText = document.createTextNode(thouText[i / 1000]);
+                    list.appendChild(listText);
+                    var destination = document.getElementById('numText');
+                    destination.appendChild(list);
+                }
+                console.log(i);
+                ++i
+            } while (i <= 1000);
+        };
+
+    </script>
+</body>
+
+</html>
